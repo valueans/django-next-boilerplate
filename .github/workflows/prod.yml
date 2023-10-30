@@ -1,0 +1,25 @@
+name: Deployement
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying changes
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd AMS-OHIO
+            git pull
+            docker-compose -f production.yml build
+            docker-compose -f production.yml stop
+            docker-compose -f production.yml up -d
+
+

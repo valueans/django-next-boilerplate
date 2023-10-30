@@ -12,3 +12,4 @@ certbot
 /node_modules
 # production
 /build
+.env

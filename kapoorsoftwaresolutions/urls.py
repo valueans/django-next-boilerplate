@@ -15,9 +15,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include, re_path
-from django.views.generic.base import TemplateView
-from allauth.account.views import confirm_email
+from django.urls import path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -41,13 +39,8 @@ admin.site.unregister(Site)
 admin.site.unregister(Group)
 
 urlpatterns = [
-    path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
     path("api/", include("kapoorsoftwaresolutions.api_router")),
-    path("users/", include("users.urls")),
-    path("dj-rest-auth/", include("dj_rest_auth.urls")),
-    path("dj-rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
-    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
 ]
 admin.site.site_header = "Kapoor Software Solutions"
 admin.site.site_title = "Kapoor Software Solutions Admin Portal"
@@ -63,7 +56,7 @@ api_info = openapi.Info(
 schema_view = get_schema_view(
     api_info,
     public=True,
-    permission_classes=(permissions.IsAuthenticated,),
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns += [

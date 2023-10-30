@@ -1,14 +1,16 @@
 # [Kapoor Software Solutions](https://kapoorsoftware.com)
 
 
-Kapoor Software Solution django-react-boilerplate
+Kapoor Software Solution django-next-boilerplate with automatic ssl generation and renewal
 
 ### features
 1. user authentication module
 2. sendgrid integration
 3. celery, celery beat and celery flower setup
 4. otp verification setup
-3. React setup with ssr (server side rendering)
+5. Next JS Setup
+6. Automatic SSL generation and renewal
+
 
 License: MIT
 
@@ -19,29 +21,21 @@ License: MIT
 2. virtualenv venv
 3. source venv/bin/activate (on linux and mac)
 4. source venv/Script/activate (on windows)
-5. pip install -r requirement/base.txt
-6. pip install -r requirement/local.txt
+5. pip install -r requirement.txt
 
 ### using docker
-1. cd django-react-boilerplate
+1. cd django-next-boilerplate
 2. docker-compose -f local.yml build
 3. docker-compose -f local.yml up
 if you want to create a superuser you can run 
 4. docker-compose -f local.yml run --rm web python manage.py createsuperuser
 
 ### using in production
-1. run ```cd django-react-boilerplate```
-2. changing your domain at compose/production/nginx/nginx.conf replace example.com
+1. run ```cd django-next-boilerplate```
+2. rename .env.example to .env
+3. replace all the required .env variable <>
 3. ```docker-compose -f production.yml build```
 4. ```docker-compose -f production.yml up -d```
-5. generate ssl for your domain by running if this run successfully by running ```docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d example.org```
-6. generate ssl for your domain by running if this run successfully by running ```docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d example.org```
-7. run ```docker-compose -f production.yml stop```
-8. go to compose/production/nginx/nginx.conf and uncomment the commented part for port 443
-9. run ```docker-compose -f production.yml build```
-10. run ```docker-compose -f production.yml up -d```
-if you want to create a superuser you can run 
-11. ```docker-compose -f production.yml run --rm web python manage.py createsuperuser```
 
 
 ### Celery

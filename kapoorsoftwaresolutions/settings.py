@@ -260,7 +260,6 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
         # "rest_framework.authentication.SessionAuthentication",
     ),
-    "EXCEPTION_HANDLER": "utils.exceptions.custom_exception_handler",
     # "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
@@ -283,6 +282,4 @@ RESULT_SERIALIZER = "json"
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 # production
-BASE_URL = "https://ohio-ams.kapoorsoftware.com/"
-# development
-# BASE_URL = "http://localhost:3000/"
+BASE_URL = env.str("BASE_URL", default="redis://redis:6379")
