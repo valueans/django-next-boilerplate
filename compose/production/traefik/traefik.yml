@@ -1,7 +1,11 @@
 
 log:
-  level: INFO
+  level: DEBUG
+  filePath: "/var/log/traefik/traefik.log"
 
+accessLog:
+  filePath: "/var/log/traefik/access.log"
+  
 api:
   dashboard: true
   insecure: true
@@ -43,7 +47,7 @@ http:
         certResolver: letsencrypt
     
     web-secure-router:
-      rule: 'Host(`{{env "HOSTNAME"}}`) && (PathPrefix(`/api`) || PathPrefix(`/admin`) || PathPrefix(`/api-docs`) || PathPrefix(`/static`))'
+      rule: 'Host(`{{env "HOSTNAME"}}`) && (PathPrefix(`/api`) || PathPrefix(`/admin`) || PathPrefix(`/static`) || PathPrefix(`/staticfiles`))'
       entryPoints:
         - web-secure
       middlewares:
