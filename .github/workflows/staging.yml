@@ -16,7 +16,7 @@ jobs:
           key: ${{ secrets.STAGING_KEY }}
           port: ${{ secrets.STAGING_PORT }}
           script: |
-            cd AMS-OHIO
+            cd kapoorsoftware
             git pull
             docker-compose -f production.yml build
             docker-compose -f production.yml stop
