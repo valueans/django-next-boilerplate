@@ -1,4 +1,4 @@
-"""kapoorsoftwaresolutions URL Configuration
+"""valueans URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -40,7 +40,7 @@ admin.site.unregister(Group)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("kapoorsoftwaresolutions.api_router")),
+    path("api/", include("valueans.api_router")),
 ]
 admin.site.site_header = "Kapoor Software Solutions"
 admin.site.site_title = "Kapoor Software Solutions Admin Portal"

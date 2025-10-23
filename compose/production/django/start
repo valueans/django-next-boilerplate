@@ -9,4 +9,4 @@ python /app/manage.py collectstatic --noinput
 
 python /app/manage.py migrate
 
-gunicorn kapoorsoftwaresolutions.wsgi --bind 0.0.0.0:8000
+gunicorn valueans.wsgi --bind 0.0.0.0:8000

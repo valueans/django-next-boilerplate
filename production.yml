@@ -51,10 +51,10 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: kapoorsoftware_postgres
+    image: valueans_postgres
     volumes:
-      - kapoorsoftwaresolutions_postgres_data:/var/lib/postgresql/data:Z
-      - kapoorsoftwaresolutions_postgres_data_backups:/backups:z
+      - valueans_postgres_data:/var/lib/postgresql/data:Z
+      - valueans_postgres_data_backups:/backups:z
     env_file:
       - ./.env
 
@@ -65,7 +65,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    image: kapoorsoftwaresolutions_celery_worker
+    image: valueans_celery_worker
     command: /start-celeryworker
     volumes:
       - .:/app
@@ -79,7 +79,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    image: kapoorsoftwaresolutions_celery_beat
+    image: valueans_celery_beat
     command: /start-celerybeat
     volumes:
       - .:/app
@@ -93,7 +93,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    image: kapoorsoftwaresolutions_celery_flower
+    image: valueans_celery_flower
     command: /start-flower
     volumes:
       - .:/app
@@ -104,7 +104,7 @@ services:
       - db
 
 volumes:
-  kapoorsoftwaresolutions_postgres_data:
+  valueans_postgres_data:
   static_volume:
-  kapoorsoftwaresolutions_postgres_data_backups:
+  valueans_postgres_data_backups:
   production_traefik: {}

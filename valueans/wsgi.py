@@ -1,5 +1,5 @@
 """
-WSGI config for kapoorsoftwaresolutions project.
+WSGI config for valueans project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kapoorsoftwaresolutions.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "valueans.settings")
 
 application = get_wsgi_application()
