@@ -32,6 +32,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/frontend/Dockerfile
+    image: valueans_frontend
     volumes:
       - .:/frontend
   web:
@@ -48,13 +49,10 @@ services:
       - redis
       - db
   db:
-    build:
-      context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: valueans_postgres
+    image: postgres:16
     volumes:
-      - valueans_postgres_data:/var/lib/postgresql/data:Z
-      - valueans_postgres_data_backups:/backups:z
+      - valueans_postgres_data:/var/lib/postgresql/data
+
     env_file:
       - ./.env
 
@@ -62,10 +60,7 @@ services:
     image: redis:latest
 
   celery_worker:
-    build:
-      context: .
-      dockerfile: ./compose/production/django/Dockerfile
-    image: valueans_celery_worker
+    image: valueans_web
     command: /start-celeryworker
     volumes:
       - .:/app
@@ -76,10 +71,7 @@ services:
       - db
 
   celery_beat:
-    build:
-      context: .
-      dockerfile: ./compose/production/django/Dockerfile
-    image: valueans_celery_beat
+    image: valueans_web
     command: /start-celerybeat
     volumes:
       - .:/app
@@ -90,10 +82,7 @@ services:
       - db
 
   flower:
-    build:
-      context: .
-      dockerfile: ./compose/production/django/Dockerfile
-    image: valueans_celery_flower
+    image: valueans_web
     command: /start-flower
     volumes:
       - .:/app
@@ -106,5 +95,5 @@ services:
 volumes:
   valueans_postgres_data:
   static_volume:
-  valueans_postgres_data_backups:
+
   production_traefik: {}

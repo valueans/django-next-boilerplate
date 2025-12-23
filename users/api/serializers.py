@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.http import HttpRequest
-from allauth.utils import email_address_exists, generate_unique_username
+from allauth.utils import generate_unique_username
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from allauth.account.forms import ResetPasswordForm

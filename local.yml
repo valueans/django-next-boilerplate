@@ -21,13 +21,10 @@ services:
       - db
 
   db:
-    build:
-      context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: valueans_postgres
+    image: postgres:16
     volumes:
-      - postgres_data:/var/lib/postgresql/data:Z
-      - postgres_data_backups:/backups:z
+      - postgres_data:/var/lib/postgresql/data
+
     env_file:
       - ./.env
 
@@ -35,10 +32,7 @@ services:
     image: redis:latest
 
   celery_worker:
-    build:
-      context: .
-      dockerfile: ./compose/local/django/Dockerfile
-    image: valueans_celery_worker
+    image: valueans_web
     command: /start-celeryworker
     volumes:
       - .:/app
@@ -49,10 +43,7 @@ services:
       - db
 
   celery_beat:
-    build:
-      context: .
-      dockerfile: ./compose/local/django/Dockerfile
-    image: valueans_celery_beat
+    image: valueans_web
     command: /start-celerybeat
     volumes:
       - .:/app
@@ -63,10 +54,7 @@ services:
       - db
 
   flower:
-    build:
-      context: .
-      dockerfile: ./compose/local/django/Dockerfile
-    image: valueans_celery_flower
+    image: valueans_web
     command: /start-flower
     volumes:
       - .:/app
@@ -80,4 +68,3 @@ services:
 
 volumes:
   postgres_data:
-  postgres_data_backups:
