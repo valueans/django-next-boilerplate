@@ -42,15 +42,15 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("valueans.api_router")),
 ]
-admin.site.site_header = "Kapoor Software Solutions"
-admin.site.site_title = "Kapoor Software Solutions Admin Portal"
-admin.site.index_title = "Kapoor Software Solutions Admin"
+admin.site.site_header = "VALUEANS"
+admin.site.site_title = "VALUEANS Admin Portal"
+admin.site.index_title = "VALUEANS Admin"
 
 # swagger
 api_info = openapi.Info(
-    title="Kapoor Software Solutions API",
+    title="VALUEANS API",
     default_version="v1",
-    description="API documentation for Kapoor Software Solutions App",
+    description="API documentation for VALUEANS App",
 )
 
 schema_view = get_schema_view(

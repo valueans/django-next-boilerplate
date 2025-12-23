@@ -1,4 +1,4 @@
-# [Kapoor Software Solutions](https://kapoorsoftware.com)
+# [VALUEANS](https://kapoorsoftware.com)
 
 
 Kapoor Software Solution django-next-boilerplate with automatic ssl generation and renewal
